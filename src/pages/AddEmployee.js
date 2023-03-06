@@ -45,16 +45,7 @@ class AddEmployee extends Component {
 								value={this.state.formData.lastName}
 								onChange={e => this.handleChange(e, 'lastName')}/>
 						</div>
-						<div className="form-group">
-							<label>Supervisor</label>
-							<select className="form-control" 
-								value={this.state.formData.supervisor} 
-								onChange={e => this.handleChange(e, 'supervisor')}
-								disabled={this.props.employees.length === 0}>
-							    	<option value="" disabled>Select an employee</option>
-									{employeesOptions}
-							</select>
-						</div>
+						
 						<button type="submit" className="btn btn-primary">Save employee</button>
 					</form>
 				</div>

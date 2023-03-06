@@ -109,7 +109,7 @@ class AddProject extends Component {
 								onChange={e => this.handleChange(e, 'name')} />
 						</div>
 						<div className="form-group">
-							<label htmlFor="timeslack">Time slack (# of days)</label>
+							<label htmlFor="timeslack">Time for project</label>
 							<input type="number" 
 								className="form-control" 
 								placeholder="Time slack" 
