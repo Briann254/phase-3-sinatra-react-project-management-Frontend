@@ -68,7 +68,7 @@ class AddProject extends Component {
 	}
 
 	render() {
-		const employeesOptions = this.props.employees.map(e => (
+		const employeesOptions = this.props.friends.map(e => (
 			<option value={e.id} 
 				key={e.id}>
 				{e.firstName} {e.lastName}
@@ -104,15 +104,25 @@ class AddProject extends Component {
 							<label htmlFor="name">Name</label>
 							<input type="text" 
 								className="form-control" 
-								placeholder="Name" 
+								placeholder="Name Of the project" 
 								value={this.state.formData.name}
 								onChange={e => this.handleChange(e, 'name')} />
 						</div>
+            <div className="form-group">
+              <label htmlFor="description">Description</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Tell me more about your project Name"
+                value={this.state.formData.description}
+                onChange={(e) => this.handleChange(e, 'description')}
+              />
+            </div>
 						<div className="form-group">
 							<label htmlFor="timeslack">Time for project</label>
 							<input type="number" 
 								className="form-control" 
-								placeholder="Time slack" 
+								placeholder="How long will the project take?" 
 								value={this.state.formData.timeslack}
 								onChange={e => this.handleChange(e, 'timeslack')}/>
 						</div>
@@ -128,12 +138,12 @@ class AddProject extends Component {
 							</div>
 						</div>
 						<div className="form-group">
-							<label>Employee</label>
+							<label>Friend</label>
 							<select className="form-control" 
 								value={this.state.formData.employee}
-								disabled={this.props.employees.length === 0}
+								disabled={this.props.friends.length === 0}
 								onChange={e => this.handleChange(e, 'employee')}>
-								<option value="" disabled>Select an employee</option>
+								<option value="" disabled>Select a Friend to help</option>
 								{employeesOptions}
 							</select>
 						</div>
@@ -144,7 +154,7 @@ class AddProject extends Component {
 								value=''
 								disabled={this.state.availableTasks.length === 0}
 								onChange={e => this.handleChangeTasks(e, 'task')}>
-								<option value="" disabled>Select a Task</option>
+								<option value="" disabled>Hmm what to do!!!</option>
 								{tasksOptions}
 							</select>
 						</div>

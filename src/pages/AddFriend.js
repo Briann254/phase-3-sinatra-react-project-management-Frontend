@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class AddEmployee extends Component {
+class AddFriend extends Component {
 	state = {
 		formData: {
 			firstName: '',
@@ -19,15 +19,15 @@ class AddEmployee extends Component {
 	}
 
 	render() {
-		const employeesOptions = this.props.employees.map(e => (
-			<option value={e.id}
-				key={e.id}>{e.firstName} {e.lastName}</option>
-		))
+		// const employeesOptions = this.props.employees.map(e => (
+		// 	<option value={e.id}
+		// 		key={e.id}>{e.firstName} {e.lastName}</option>
+		// ))
 
 		return (
 			<div className="row">
 				<div className="col-6">
-					<h1>New Employee</h1>
+					<h1>New Friend</h1>
 					<form onSubmit={e => this.props.handleForm(e, this.state.formData)}>
 						<div className="form-group">
 							<label htmlFor="name">First Name</label>
@@ -46,7 +46,7 @@ class AddEmployee extends Component {
 								onChange={e => this.handleChange(e, 'lastName')}/>
 						</div>
 						
-						<button type="submit" className="btn btn-primary">Save employee</button>
+						<button type="submit" className="btn btn-primary">Save Friend</button>
 					</form>
 				</div>
 			</div>
@@ -54,4 +54,4 @@ class AddEmployee extends Component {
 	}
 }
 
-export default AddEmployee
+export default AddFriend

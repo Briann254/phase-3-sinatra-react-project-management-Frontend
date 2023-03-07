@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Toolbar = () => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-    <Link className="navbar-brand" to="/">
-      @MyApp 
+ {/* navbar */}
+    <Link className="navbar-brand" to="/LandingPage">
+      @MyApp
     </Link>	
     <button
       className="navbar-toggler"
@@ -20,8 +21,8 @@ const Toolbar = () => (
     <div className="collapse navbar-collapse" id="toolbar">
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/employees">
-            Employees
+          <Link className="nav-link" to="/friends">
+            Team
           </Link>
         </li>
         <li className="nav-item">
@@ -34,15 +35,9 @@ const Toolbar = () => (
             Projects
           </Link>
         </li>
+        
         <li className="nav-item">
-          <Link className="nav-link" to="/profile">
-            <i className="fas fa-user"></i> Profile
-          </Link>
-        </li>
-        <li className="nav-item">
-          <button className="btn btn-primary">
-            <i className="fas fa-plus"></i> New Project
-          </button>
+        <Link className="btn btn-primary" to="/projects/add">New Project</Link>
         </li>
       </ul>
     </div>

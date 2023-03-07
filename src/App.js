@@ -2,21 +2,29 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
 import Toolbar from './components/UI/Toolbar/Toolbar'
 import ListProjectsPage from './pages/ListProjects'
-import ListEmployeesPage from './pages/ListEmployees'
+import ListfriendsPage from './pages/ListFriends'
 import ListTasksPage from './pages/ListTasks'
 import AddProjectPage from './pages/AddProject'
-import AddEmployeePage from './pages/AddEmployee'
+import AddEmployeePage from './pages/AddFriend'
 import AddTaskPage from './pages/AddTask'
 
 import './App.css';
+// // import Navbar from "./components/Navbar";
+// import LandingPage from "./components/LandingPage";
+// // import Projects from "./components/Projects";
+// // import CreateProject from "./components/CreateProject";
+// // import Footer from "./components/Footer";
+// import RegistrationForm from "./components/RegistrationForm";
+import LoginForm from "./components/LoginForm";
+
 
 class App extends Component {
 
 	state = {
 		projects: [],
 		idProjects: 0,
-		employees: [],
-		idEmployees: 0,
+		friends: [],
+		idfriends: 0,
 		tasks: [],
 		idTasks: 0
 	}
@@ -39,13 +47,13 @@ class App extends Component {
 		e.preventDefault()
 
 		let employee = { ...data }
-		employee['id'] = this.state.idEmployees
-		let employees = this.state.employees.map(e => e)
-		employees.push(employee)
+		employee['id'] = this.state.idfriends
+		let friends = this.state.friends.map(e => e)
+		friends.push(employee)
 		
 		this.setState({ 
-			employees: employees, 
-			idEmployees: this.state.idEmployees + 1
+			friends: friends, 
+			idfriends: this.state.idfriends + 1
 		})
 	}
 
@@ -74,8 +82,8 @@ class App extends Component {
 	}	
 
 	handleRemoveEmployee = (e, id) => {
-		let employees = this.state.employees.filter(e => id !== e.id)
-		this.setState({ employees: employees });
+		let friends = this.state.friends.filter(e => id !== e.id)
+		this.setState({ friends: friends });
 	}
 
 	handleRemoveTask = (e, id) => {
@@ -97,15 +105,24 @@ class App extends Component {
 		return (
 			<BrowserRouter>
 				<div>
+					
 					<Toolbar />
 					<div className="container py-5">
 						<div className="row">
 							<div className="col-12">
+						
+							{/* <Route path="/" element = {<LandingPage />}/>
+          								{/* <Route path="/projects" element = {<Projects />}/> */}
+          						{/* <Route path="/create-project" element = {<CreateProject />}/> */}
+          						{/* <Route path="/RegistrationForm" element = {<RegistrationForm />}/> */}
+          						<Route exact path="/login" component={LoginForm} />
+
 								<Route exact path="/projects"
 									component={() => <ListProjectsPage projects={this.state.projects} />} />
-								<Route exact path="/employees"
-									component={() => <ListEmployeesPage 
-														employees={this.state.employees} 
+								
+								<Route exact path="/friends"
+									component={() => <ListfriendsPage 
+														friends={this.state.friends} 
 														removeClicked={this.handleRemoveEmployee} />} />
 								<Route exact path="/tasks"
 									component={() => <ListTasksPage 
@@ -114,17 +131,18 @@ class App extends Component {
 								<Route path="/projects/add"
 									component={() => <AddProjectPage 
 										handleForm={this.handleNewProjectForm}
-										employees={this.state.employees}
+										friends={this.state.friends}
 										tasks={this.state.tasks} />} />
-								<Route path="/employees/add"
+								<Route path="/friends/add"
 									component={() => <AddEmployeePage 
 										handleForm={this.handleNewEmployeeForm}
-										employees={this.state.employees} />} />
+										friends={this.state.friends} />} />
 								<Route path="/tasks/add/:id?"
 									component={(props) => <AddTaskPage 
 										handleForm={this.handleNewTaskForm}
 										tasks={this.state.tasks}
-										{...props} />} />										
+										{...props} />} />	
+														
 							</div>
 						</div>
 					</div>			

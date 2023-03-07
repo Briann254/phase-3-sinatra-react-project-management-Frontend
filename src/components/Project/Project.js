@@ -1,23 +1,31 @@
-import React from 'react'
-import styles from './Project.module.css'
+import React, { useState } from 'react'
+import Project from './Project'
 
-const project = props => {
+const App = () => {
+    const [projects, setProjects] = useState([
+        { id: 1, name: 'Project 1', timeslack: 10, employee: 'John' },
+        { id: 2, name: 'Project 2', timeslack: 20, employee: 'Jane' },
+        { id: 3, name: 'Project 3', timeslack: 5, employee: 'Bob' },
+    ])
 
-	let classes = [styles.Project, 'card']
+    const removeProject = (id) => {
+        setProjects(projects.filter(p => p.id !== id))
+    }
 
-	return (
-		<div className='col-3'>
-			<div className={classes.join(' ')}>
-				<div className="card-body">
-					<h5 className="card-title">{props.name}</h5>
-					<p className="card-text">Time slack: {props.timeslack}</p>
-					<p className="card-text">Employee: {props.employee}</p>
-					<button className="btn btn-sm btn-info mr-3">Edit</button>
-					<button className="btn btn-sm btn-danger">Remove</button>
-				</div>
-			</div>
-		</div>
-	)
+    return (
+        <div className="container">
+            <div className="row">
+                {projects.map(p => (
+                    <Project key={p.id}
+                             id={p.id}
+                             name={p.name}
+                             timeslack={p.timeslack}
+                             employee={p.employee}
+                             removeClicked={removeProject} />
+                ))}
+            </div>
+        </div>
+    )
 }
 
-export default project
+export default App
